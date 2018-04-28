@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('about-me') }}">Home</a>
+                <a class="nav-link" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about-me">About me</a>
+                <a class="nav-link" href="{{ route('about-me') }}">About me</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Contact-me">Contact me</a>
+                <a class="nav-link" href="{{ route('contact-me') }}">Contact me</a>
             </li>
         </ul>
     </div>

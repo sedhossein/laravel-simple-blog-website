@@ -1,32 +1,18 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/','HomeController@home')->name('home');
 
-Route::get('/about-me', function () {
-    return view('about-me');
-})->name('about-me');
+Route::get('/about-me', 'HomeController@about_me')->name('about-me');
 
 
-Route::get('/contact-me', function () {
-    return view('contact-me');
-});
 
+Route::get('/contact-me', 'HomeController@contact_me_view')->name('contact-me');
 
-Route::get('admin/add-user', function () {
-    return view('contact-me');
-});
+Route::post('contact-me','HomeController@contact_action')->name('form-action');
 
-
-Route::get('admin/add-app', function () {
-    return view('contact-me');
-});
-
-
-Route::get('admin/edit-user', function () {
-    return view('contact-me');
+Route::get('/test', function (){
+   return view('welcome');
 });
 
 //

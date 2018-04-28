@@ -15,12 +15,19 @@
     @include('includes.navbar')
 <hr> <hr> <hr>
 
+    @if( Request::is('/') )
+        @include('includes.jumbo')
+    @endif
+
     <div class="container">
         <div class="row">
             @yield('content')
         </div>
     </div>
-
+<hr>
+    <footer class="container-fluid text-center text-md-left">
+        @include('includes.footer')
+    </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

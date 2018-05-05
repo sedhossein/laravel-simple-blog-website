@@ -28,25 +28,25 @@ class HomeController extends Controller
 
     public function contact_action(Request $request)
     {
-        $this->validate($request,[
+
+//        dd($request->all());
+
+        $this->validate($request, [
             'email' => 'required|max:255',
-            'password' => 'required|max:5',
-        ],[
-            'email'    => 'وارد کردن پست الکتریکی اجباریست !',
-            'password' => 'مقدار وارد شده غیر مجاز است .',
+            'comment' => 'required',
+        ], [
+            'email' => 'وارد کردن پست الکتریکی اجباریست !',
+            'comment' => 'مقدار وارد شده غیر مجاز است .',
         ]);
+
         // if validate done OK ==> here
 
-            return jDate::forge('now - 10 minutes')->ago(); // 1395-02-19
-
         $message = new Message();
-        $message->password = $request->password;
+        $message->comment = $request->comment;
         $message->email = $request->email;
-        $message->time = time();
         $message->save();
 
-
-
+        return redirect()->back()->with('status', 'we get your message ! thanks .');
     }
 
 }

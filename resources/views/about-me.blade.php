@@ -5,6 +5,10 @@
     @endsection
 
 @section('content')
+    <div>
+        <img src="{{ asset('images/about-me.png') }}">
+    </div>
+    <hr>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aut consequatur cumque delectus deleniti
     dolores id, ipsa, itaque modi praesentium quae tempore vel. Delectus explicabo facere impedit molestiae rem!
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, assumenda commodi debitis dolores eos ex fuga fugit

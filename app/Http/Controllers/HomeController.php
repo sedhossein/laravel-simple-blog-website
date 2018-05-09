@@ -36,7 +36,13 @@ class HomeController extends Controller
             'email' => 'وارد کردن پست الکتریکی اجباریست !',
             'comment' => 'مقدار وارد شده غیر مجاز است .',
         ]);
-
+/*
+ *             'user_id.required' => 'فیلد نام صاحب تراکنش را وارد نمایید.',
+            'log_type.required' => 'نوع تراکنش را انتخاب نمایید.',
+            'log_action.required' => 'نوع تراکنش را انتخاب نمایید.',
+            'price.required' => 'مبلغ تراکنش را وارد نمایید.',
+            'price.integer' => 'مبلغ تراکنش را عدد نمایید.',
+ * */
         // if validate done OK ==> here
 
         $message = new Message();

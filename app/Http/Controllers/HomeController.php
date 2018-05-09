@@ -29,8 +29,6 @@ class HomeController extends Controller
     public function contact_action(Request $request)
     {
 
-//        dd($request->all());
-
         $this->validate($request, [
             'email' => 'required|max:255',
             'comment' => 'required',

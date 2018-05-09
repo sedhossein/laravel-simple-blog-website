@@ -9,14 +9,14 @@
     @if( count($errors) > 0 )
         <hr>
         @foreach($errors->all() as $error)
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger col-md-12 col-sm-12"  role="alert" >
                 {{ $error }}
             </div>
         @endforeach
 
     @endif
 
-    <form method="post" action="{{ route('form-action') }}">
+    <form method="post" action="{{ route('form-action') }}" class="col-md-12 col-sm-12">
         {{ csrf_field() }}
 
         <div class="form-group">

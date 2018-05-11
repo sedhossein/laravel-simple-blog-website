@@ -9,11 +9,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::get()->paginate();
+//        $posts = Post::get()->paginate();
 
-        return view('index',[
-            'posts' => $posts
-        ]);
+//        return view('index',[
+//            'posts' => $posts
+//        ]);
 
 //        return view('index',compact('posts'));
     }

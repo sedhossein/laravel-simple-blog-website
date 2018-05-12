@@ -16,7 +16,7 @@
 
     @endif
 
-    <form method="post" action="{{ route('form-action') }}" class="col-md-12 col-sm-12">
+    <form method="post" action="{{ route('form-action') }}" class="col-sm-12">
         {{ csrf_field() }}
 
         <div class="form-group">

@@ -9,6 +9,11 @@ class DatabaseSeeder extends Seeder
     {
 
          $this->call(UsersTableSeeder::class);
+         $this->call(PostTableSeeder::class);
+         $this->call(TagsTableSeeder::class);
+
+
+
 
 //         DB::table('messages')->insert([
 //            'comment' => 'seed with DB:: comment',

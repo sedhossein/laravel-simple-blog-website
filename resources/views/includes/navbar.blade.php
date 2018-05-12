@@ -18,7 +18,7 @@
                 <a class="nav-link" href="{{ route('contact-me') }}">Contact me</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('post-index') }}">Blog</a>
+                <a class="nav-link active" href="{{ route('blog.index') }}">Blog</a>
             </li>
         </ul>
     </div>

@@ -1,21 +1,35 @@
 <?php
 
+//TODO : ye copy az homeController begir hatmnn ghable auth() !!!!
+//TODO : make imageController(codes are bellow) and another way to validate(with facade)
+//TODO : middleware
+//TODO : auth -> set user_id for blogger
+//TODO : take comment in parts => example: in .blade eager and lazy Loading .
+//TODO : make CommentController and ...
+
+
+// ========================== BLOG =============================
 Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog' ], function () {
+    // index
     Route::get('/','PostController@index')->name('index');
+    // show
+//    Route::get('/{id}','PostController@show')->name('show');
+    // create
     Route::get('/create','PostController@create')->name('create');
     Route::post('/store','PostController@store')->name('store');
+    // edit
     Route::get('/edit/{id}','PostController@edit')->name('edit');
     Route::post('/update/{post}','PostController@update')->name('update');
-    Route::get('/destroy/{id}','PostController@destroy')->name('destroy');
+    // recourse
+    Route::post('/destroy/{id}','PostController@destroy')->name('destroy');
 
 });
 
+
+
 Route::get('/','HomeController@home')->name('home');
-
 Route::get('/about-me', 'HomeController@about_me')->name('about-me');
-
 Route::get('/contact-me', 'HomeController@contact_me_view')->name('contact-me');
-
 Route::post('contact-me','HomeController@contact_action')->name('form-action');
 
 
@@ -30,14 +44,32 @@ Route::get('/test/{id}', 'TagController@show');
 
 
 
-////https://github.com/laracasts/Laravel-5-Generators-Extended#pivot-tables
-//public function up()
-//{
-//    Schema::create('post_tag', function(Blueprint $table)
-//    {
-//        $table->integer('post_id')->unsigned()->index();
-//        $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-//        $table->integer('tag_id')->unsigned()->index();
-//        $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
-//    });
+//$input = $request->only([
+//    'description',
+//    'title',
+//    'body',
+//    'file'
+//]);
+//
+//$messages = [
+//    'description.max' => 'max of description is 512 charecter !',
+//    'description.required' => 'the description is empty !',
+//    'body.required' => 'the body is empty !',
+//    'file.max' => 'max of file size is 2Mb',
+//];
+//
+//$validator = Validator::make($request->all(), [
+//    'title' => 'required|max:36',
+//    'description' => 'required|max:512',
+//    'body' => 'required',
+//    'file' => 'max:5000',
+//], $messages);
+//
+//
+//if ($validator->fails()) {
+//    return redirect()
+//        ->back()
+//        ->withInput($request->all())
+//        ->withErrors($validator->errors());
 //}
+

@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
 
 
 
-
 //         DB::table('messages')->insert([
 //            'comment' => 'seed with DB:: comment',
 //             'email' => 'test@gmail.com'

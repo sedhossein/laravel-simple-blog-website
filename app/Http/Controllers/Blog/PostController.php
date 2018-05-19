@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Blog;
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -11,17 +12,17 @@ class PostController extends Controller
 
         $posts = Post::paginate(10);
 
+//      ===================== way 1 to pass the parameters to .blade (view) =====================
+
 //        return view('blog.index',[
 //            'posts' => $posts
 //        ]);
 
+
+//      ===================== way 2 to pass the parameters to .blade (view) =====================
+
         return view('blog.index',compact('posts'));
 
-//        return view('index',[
-//            'posts' => $posts
-//        ]);
-
-//        return view('index',compact('posts'));
     }
 
     public function create()
@@ -31,6 +32,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title' => 'required|max:50',
             'body' => 'required',
@@ -40,10 +42,9 @@ class PostController extends Controller
         ]);
 
         $post = new Post();
-        $post->user_id = 1;
+        $post->user_id = \Auth::id();
         $post->title = $request->title;
         $post->body = $request->body;
-
         $post->save();
 
         return redirect()->back()->with('status', 'New post saved  successfully! ');
@@ -53,12 +54,13 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::where('id',$id)->get();
-
         return view('blog.edit',compact('post'));
     }
 
-    public function update(Request $request,Post $post)//$id
+    public function update(Request $request,Post $post)
     {
+
+//        =====================      way one / with passing the id of product =====================
 
 //        $post = Post::where('id',$id)->update([
 //            'user_id' => 6,
@@ -66,6 +68,8 @@ class PostController extends Controller
 //            'body' => $request->body
 //        ]);
 
+
+//      =====================      way two / with route model binding =====================
         $post->user_id = 6;
         $post->title = $request->title;
         $post->body = $request->body;
@@ -77,10 +81,41 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        Post::where('id',$id)->delete();
+        Post::findOrFail($id)->delete();
         return 'yo';
 //        return redirect()->back()->with('status', 'the post changed  successfully! ');
     }
 
+
+    public function show($id) //single post show
+    {
+
+        $post = Post::where('id',$id)->get();
+
+
+        if ( !$post->count() )
+        {
+            //return target view
+            return 'whooops! this request is invalid ...';
+        }
+
+        $post = $post[0]; //dirty code
+
+        //if we want to use the owner of comment,
+        //we could user lazy load in view(show.blade)
+        $comments = Comment::select([
+            'user_id','body','created_at'
+        ])->where('post_id',$id)->get();
+
+        //for eager loading is better to use
+        // Comment::with('user')->where('user_id',$id)->get();
+//        dd($comments);
+
+
+        return view('blog.show',compact([
+            'post',
+            'comments'
+        ]));
+    }
 
 }

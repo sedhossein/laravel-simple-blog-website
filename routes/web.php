@@ -1,19 +1,17 @@
 <?php
 
-//TODO : ye copy az homeController begir hatmnn ghable auth() !!!!
 //TODO : make imageController(codes are bellow) and another way to validate(with facade)
-//TODO : middleware
-//TODO : auth -> set user_id for blogger
-//TODO : take comment in parts => example: in .blade eager and lazy Loading .
 //TODO : make CommentController and ...
 
 
+Auth::routes();
 // ========================== BLOG =============================
 Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog' ], function () {
     // index
     Route::get('/','PostController@index')->name('index');
     // show
-//    Route::get('/{id}','PostController@show')->name('show');
+    Route::get('/{id}','PostController@show')
+        ->name('show')->where('id', '[0-9]+');;
     // create
     Route::get('/create','PostController@create')->name('create');
     Route::post('/store','PostController@store')->name('store');
@@ -25,7 +23,13 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog' ], func
 
 });
 
+Route::group(['prefix' => 'tag', 'as' => 'tag.', 'namespace' => 'Tag' ], function () {
+    Route::get('/show/{id}','TagController@show')->name('show');
+});
 
+Route::group(['prefix' => 'comment', 'as' => 'comment.', 'namespace' => 'Comment' ], function () {
+    Route::post('store/{id}','CommentController@create')->name('create');
+});
 
 Route::get('/','HomeController@home')->name('home');
 Route::get('/about-me', 'HomeController@about_me')->name('about-me');

@@ -30,7 +30,7 @@
                         </div>
                     <hr>
                     <p>
-                        <a class="btn btn-primary" href="#" role="button">
+                        <a class="btn btn-primary" href="{{ route( 'blog.show',$post->id ) }}" role="button">
                             Read more
                         </a>
                     </p>

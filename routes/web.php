@@ -1,8 +1,5 @@
 <?php
 
-//TODO : make imageController(codes are bellow) and another way to validate(with facade)
-//TODO : make CommentController and ...
-
 
 Auth::routes();
 // ========================== BLOG =============================

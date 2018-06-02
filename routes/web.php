@@ -20,57 +20,21 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog' ], func
 
 });
 
+
+// ========================== Tag =============================
 Route::group(['prefix' => 'tag', 'as' => 'tag.', 'namespace' => 'Tag' ], function () {
     Route::get('/show/{id}','TagController@show')->name('show');
 });
 
+
+// ========================== Comment =============================
 Route::group(['prefix' => 'comment', 'as' => 'comment.', 'namespace' => 'Comment' ], function () {
     Route::post('store/{id}','CommentController@create')->name('create');
 });
 
+
+// ========================== Guest user =============================
 Route::get('/','HomeController@home')->name('home');
 Route::get('/about-me', 'HomeController@about_me')->name('about-me');
 Route::get('/contact-me', 'HomeController@contact_me_view')->name('contact-me');
 Route::post('contact-me','HomeController@contact_action')->name('form-action');
-
-
-
-Route::get('/test/{id}', 'TagController@show');
-
-
-
-
-
-
-
-
-
-//$input = $request->only([
-//    'description',
-//    'title',
-//    'body',
-//    'file'
-//]);
-//
-//$messages = [
-//    'description.max' => 'max of description is 512 charecter !',
-//    'description.required' => 'the description is empty !',
-//    'body.required' => 'the body is empty !',
-//    'file.max' => 'max of file size is 2Mb',
-//];
-//
-//$validator = Validator::make($request->all(), [
-//    'title' => 'required|max:36',
-//    'description' => 'required|max:512',
-//    'body' => 'required',
-//    'file' => 'max:5000',
-//], $messages);
-//
-//
-//if ($validator->fails()) {
-//    return redirect()
-//        ->back()
-//        ->withInput($request->all())
-//        ->withErrors($validator->errors());
-//}
-

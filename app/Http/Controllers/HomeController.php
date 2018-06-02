@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+    //    $this->middleware('auth');
     }
 
     public function home()
@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
 
         $this->validate($request, [
-            'email' => 'required|max:5',
+            'email' => 'required|max:125',
             'comment' => 'required',
         ], [
             'email.required' => 'وارد کردن پست الکتریکی اجباریست !',
